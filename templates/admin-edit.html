@@ -60,16 +60,16 @@ function cancel_edit()
 <body>
 	<h1 class="admin-page-title">Edit article</h1>
 	<div class="admin-page-area">
-	<form action="" method="post" name="article">
-	<span>Title:</span> <input type="text" align="left" width="80" name="title" value="{{ article.title }}"/>
-	{% if article.draft %}
+	   <form action="" method="post" name="article">
+	   <span>Title:</span> <input type="text" align="left" width="80" name="title" value="{{ article.title }}"/>
+	   {% if article.draft %}
 		<input type="checkbox" name="draft" checked="true" />
-	{% else %}
+	   {% else %}
 		<input type="checkbox" name="draft" checked="false" />
-	{% endif %}
+	   {% endif %}
 		<span>Draft</span>
 		<textarea name="content" cols="100%" rows="20">
-	{{article.body}}
+	   {{article.body}}
     		</textarea><br />
 		<span>Tags:</span><input type="text" width="80" name="tags" value="{{ article.tag_string }}"/>
 		<div id="buttons">
@@ -78,17 +78,17 @@ function cancel_edit()
 		    <button class="action"><span class="label" name="cancel" onClick="cancel_edit()" value="Cancel">Cancel</span></button>
 		    <button class="action red"><span class="label" name="delete" onClick="del()" value="Delete">Delete</span></button>
 		</div>
-	{% if article.id %}
-		<input type="hidden" name="id" value="{{ article.id }}" />
-	{% endif %}
-		<input type="hidden" name="loaded_draft" value="{{ article.draft }}" />
-		<input type="hidden" name="edit_again" value="false"/>
-	</form>
+	        {% if article.id %}
+		    <input type="hidden" name="id" value="{{ article.id }}" />
+	        {% endif %}
+		    <input type="hidden" name="loaded_draft" value="{{ article.draft }}" />
+		    <input type="hidden" name="edit_again" value="false"/>
+	   </form>
 	</div>
 	<h1 class="admin-page-title">Preview:</h1>
 	<div style="border-top 1px solid black">
-	<iframe src="/id/{{ article.id }}" width="97%" scrolling="auto" height="750" frameborder="0">
-	</iframe>
+	   <iframe src="/id/{{ article.id }}" width="97%" scrolling="auto" height="750" frameborder="0">
+	   </iframe>
 	</div>
 </body>
 </html>

@@ -4,6 +4,7 @@
 	<title>Linux Experto</title>
 	<meta http-equiv="Content-Type" content="text/html" charset=utf-8" />
 	<link href="/static/style.css" rel="stylesheet" type="text/css" />
+	<link href="/static/buttons.css" rel="stylesheet" type="text/css" />
     </head>
     <script type="text/javascript">
 	function show_site()
@@ -22,8 +23,8 @@
 	    <div class="admin-page-area">
 		<h1 class="admin-page-title">Existing articles</h1>
 		<div class="admin-main-buttons">
-			<input type="button" name="new" onClick="new_article()" value="New article" />
-			<input type="button" name="show" onClick="show_site()" value="Show site" />
+		    <button name="new" onClick="new_article()" value="New article" class="action blue"><span class="label">New Article</span></button>
+		    <button name="show" onClick="show_site()" value="Show site" class="action blue"><span class="label">Show site</span></button>
 		</div>
 	<form action="" method="show" name="admin">
 	    <ul>
@@ -33,7 +34,7 @@
 		{% else %}
 		<li class="admin-published">
 		{% endif %}
-		{{ article.published_when|date:"j F, Y" }}&nbsp;
+		{{ article.published_when|date:"j F, Y" }}
 		<a href="/admin/article/edit/?id={{ article.id }}">{{ article.title }}</a>
 		{% endfor %}
 	    </ul>

@@ -12,7 +12,7 @@ import os
 # Constants
 # -----------------------------------------------------------------------------
 
-BLOG_NAME = 'Linux experto'
+BLOG_NAME = 'Linux Xperto'
 CANONICAL_BLOG_URL = 'http://linuxexperto.appspot.com/'
 BLOG_OWNER = 'JZA'
 

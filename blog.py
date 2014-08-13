@@ -123,7 +123,7 @@ class AbstractPageHandler(request.BlogRequestHandler):
 	for article in articles:
 	    if html:
 		try:
-		    article.html = rst2html(article.body)
+		    article.html = article.body
 		except AttributeError:
 		    article.html = ''
 	    article.path = '/' + defs.ARTICLE_URL_PATH + '/%s' % article.id
