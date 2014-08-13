@@ -72,18 +72,18 @@ function cancel_edit()
 	   {{article.body}}
     		</textarea><br />
 		<span>Tags:</span><input type="text" width="80" name="tags" value="{{ article.tag_string }}"/>
-		<div id="buttons">
-		    <button class="action blue"><span class="label" name="save" onClick="save_article()" value="Save">Save</span></button>
-		    <button class="action blue"><span class="label" name="save" onClick="save_and_reedit()" value="Save and Keep Editing">Save and Edit</span></button>
-		    <button class="action"><span class="label" name="cancel" onClick="cancel_edit()" value="Cancel">Cancel</span></button>
-		    <button class="action red"><span class="label" name="delete" onClick="del()" value="Delete">Delete</span></button>
-		</div>
 	        {% if article.id %}
 		    <input type="hidden" name="id" value="{{ article.id }}" />
 	        {% endif %}
 		    <input type="hidden" name="loaded_draft" value="{{ article.draft }}" />
 		    <input type="hidden" name="edit_again" value="false"/>
 	   </form>
+		<div id="buttons">
+		    <button class="action blue"><span class="label" name="save" onClick="save_article()" value="Save">Save</span></button>
+		    <button class="action blue"><span class="label" name="save" onClick="save_and_reedit()" value="Save and Keep Editing">Save and Edit</span></button>
+		    <button class="action"><span class="label" name="cancel" onClick="cancel_edit()" value="Cancel">Cancel</span></button>
+		    <button class="action red"><span class="label" name="delete" onClick="del()" value="Delete">Delete</span></button>
+		</div>
 	</div>
 	<h1 class="admin-page-title">Preview:</h1>
 	<div style="border-top 1px solid black">
