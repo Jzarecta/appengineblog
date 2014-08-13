@@ -19,25 +19,27 @@ class Article(db.Model):
 
     @classmethod
     def get_all(cls):
-        q = db.Query(Article)
-        q.order('-published_when')
-        return q.fetch(FETCH_THEM_ALL)
+        query = db.Query(Article)
+        query.order('-published_when')
+        return query.fetch(FETCH_THEM_ALL)
 
     @classmethod
     def get(cls, id):
-        q = db.Query(Article)
-        q.filter('id = ', id)
-        return q.get()
+        query = db.Query(Article)
+        query.filter('id = ', id)
+        return query.get()
 
     @classmethod
     def published_query(cls):
-        q = db.Query(Article)
-        q.filter('draft = ', False)
-        return q
+        query = db.Query(Article)
+        query.filter('draft = ', False)
+        return query
 
     @classmethod
     def published(cls):
-        return Article.published_query().order('-published_when').fetch(FETCH_THEM_ALL)
+        return Article.published_query()\
+                      .order('-published_when')\
+		      .fetch(FETCH_THEM_ALL)
 
     @classmethod
     def get_all_tags(cls):

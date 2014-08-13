@@ -25,7 +25,8 @@ class NewArticleHandler(request.BlogRequestHandler):
     def get(self):
 	article = Article(title='New article',
 		          body='Content goes here',
-			  draft=True)
+			  draft=False)
+	article.save()
 	template_vars = {'article' : article}
 	self.response.out.write(self.render_template('admin-edit.html',
 	                                             template_vars))
@@ -37,8 +38,8 @@ class SaveArticleHandler(request.BlogRequestHandler):
     def post(self):
 	title = cgi.escape(self.request.get('title'))
 	body = cgi.escape(self.request.get('content'))
-	s_id = cgi.escape(self.request.get('id'))
-	id = int(s_id) if s_id else None
+	id = int(cgi.escape(self.request.get('id')))
+	#id = int(s_id) if s_id else None
 	tags = cgi.escape(self.request.get('tags'))
 	published_when = cgi.escape(self.request.get('published_when'))
 	draft = cgi.escape(self.request.get('draft'))
@@ -53,7 +54,7 @@ class SaveArticleHandler(request.BlogRequestHandler):
 	else:
 	    draft = (draft.lower() == 'on')
 
-	article = Article.get(id) if id else None
+	article = Article.get(id)
 	if article:
 	    # It's an edit of an existing item
 	    article.title = title
@@ -76,7 +77,7 @@ class SaveArticleHandler(request.BlogRequestHandler):
 	edit_again = edit_again and (edit_again.lower() == 'true')
 
 	if edit_again:
-	   self.redirect('/admin/article/edit/?id=%s' % article.id)
+	   self.redirect('/admin/article/edit/?id=%s' % id)
 	else:
 	    self.redirect('/admin/')
 
