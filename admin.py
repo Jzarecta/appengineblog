@@ -68,15 +68,17 @@ class SaveArticleHandler(request.BlogRequestHandler):
 			      tags = tags,
 			      id=id,
 			      draft=draft)
-	    article.save()
+	    just_published = not draft
 
-	    edit_again = cgi.escape(self.request.get('edit_again'))
-	    edit_again = edit_again and (edit_again.lower() == 'true')
+	article.save()
 
-	    if edit_again:
-		self.redirect('/admin/article/edit/?id=%s' % id)
-	    else:
-		self.redirect('/admin/')
+	edit_again = cgi.escape(self.request.get('edit_again'))
+	edit_again = edit_again and (edit_again.lower() == 'true')
+
+	if edit_again:
+	   self.redirect('/admin/article/edit/?id=%s' % article.id)
+	else:
+	    self.redirect('/admin/')
 
 class EditArticleHandler(request.BlogRequestHandler):
     """
